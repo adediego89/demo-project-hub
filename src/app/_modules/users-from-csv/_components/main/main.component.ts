@@ -1,18 +1,23 @@
-import {Component, ViewChild} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {FileSelectEvent, FileUpload} from "primeng/fileupload";
 import {IUserFromCsv} from "../../_models/user-from-csv.interface";
 import {NgxCsvParser, NgxCSVParserError} from "ngx-csv-parser";
 import {UsersFromCsvService} from "../../_services/users-from-csv.service";
 import {UserModel} from "../../_models/user-model";
+import {MenuItem} from "primeng/api";
 
 @Component({
   selector: 'app-main',
   templateUrl: './main.component.html',
   styleUrl: './main.component.scss'
 })
-export class MainComponent {
+export class MainComponent implements OnInit{
 
   @ViewChild('fileUpload') fileUploadComponent!: FileUpload;
+  breadcrumbHomeItem: MenuItem | undefined;
+  breadcrumbItems: MenuItem[] = [];
+
+
   stepperActive: number = 0;
   selectedFiles: File[] = [];
   isStep0Valid: boolean = false;
@@ -24,6 +29,13 @@ export class MainComponent {
   constructor(
     private ngxCsvParser: NgxCsvParser,
     private usersFromCsvSvc: UsersFromCsvService) {}
+
+  ngOnInit(): void {
+    this.breadcrumbHomeItem = { icon: 'pi pi-home', routerLink: '/' };
+    this.breadcrumbItems = [
+      { label: 'Users from .csv file' }
+    ];
+  }
 
   onActiveStepChange(event: number) {
     this.stepperActive = event;

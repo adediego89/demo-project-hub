@@ -17,6 +17,8 @@ import {StepperModule} from "primeng/stepper";
 import {CardModule} from "primeng/card";
 import {DropdownModule} from "primeng/dropdown";
 import {InputTextModule} from "primeng/inputtext";
+import {BreadcrumbModule} from "primeng/breadcrumb";
+import {SharedModule} from "../_shared/shared.module";
 
 
 @NgModule({
@@ -35,7 +37,9 @@ import {InputTextModule} from "primeng/inputtext";
     StepperModule,
     CardModule,
     DropdownModule,
-    InputTextModule
+    InputTextModule,
+    BreadcrumbModule,
+    SharedModule
   ],
   providers: [ExcelService],
   bootstrap: []

@@ -1,0 +1,10 @@
+.topBar {
+  height: 60px;
+  border-bottom: 1px solid var(--surface-border);
+  padding: 0.5rem 1rem;
+
+  img {
+    filter: invert(79%) sepia(30%) saturate(632%) hue-rotate(349deg) brightness(86%) contrast(87%);
+  }
+
+}

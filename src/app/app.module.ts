@@ -7,6 +7,7 @@ import { MenuComponent } from './_components/menu/menu.component';
 import {HttpClientModule} from "@angular/common/http";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {MenuModule} from "primeng/menu";
+import {SharedModule} from "./_modules/_shared/shared.module";
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import {MenuModule} from "primeng/menu";
     BrowserAnimationsModule,
     AppRoutingModule,
     HttpClientModule,
+    SharedModule,
     MenuModule
   ],
   providers: [],

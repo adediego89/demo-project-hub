@@ -4,6 +4,7 @@ import {Models} from "purecloud-platform-client-v2";
 import {Stepper} from "primeng/stepper/stepper";
 import {ExcelService} from "../../_services/excel.service";
 import {GenesysCloudService} from "../../../../_services/genesys-cloud.service";
+import {MenuItem} from "primeng/api";
 
 interface Column {
   field: string;
@@ -27,6 +28,8 @@ export class MainComponent implements OnInit {
   private readonly PAGESIZE = 25;
   private readonly DELAY = (seconds: number) => new Promise(res => setTimeout(res, seconds * 1000));
 
+  breadcrumbHomeItem: MenuItem | undefined;
+  breadcrumbItems: MenuItem[] = [];
   isAuthorized: boolean = false;
   cols: Column[] = [];
   queues: Models.Queue[] = [];
@@ -50,6 +53,12 @@ export class MainComponent implements OnInit {
   ngOnInit(): void {
 
     this.gcSvc.isAuthorized.subscribe(isAuthorized => this.isAuthorized = isAuthorized);
+
+    this.breadcrumbHomeItem = { icon: 'pi pi-home', routerLink: '/' };
+    this.breadcrumbItems = [
+      { label: 'Report to Documents' }
+    ];
+
     // Initialize columns
     this.cols = [
       { field: 'conversationStart', header: 'Date' },

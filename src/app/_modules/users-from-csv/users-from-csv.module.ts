@@ -20,6 +20,8 @@ import {SitesApiService} from "./_services/sites-api.service";
 import {PhoneApiService} from "./_services/phone-api.service";
 import {UsersApiService} from "./_services/users-api.service";
 import {NgxCsvParserModule} from "ngx-csv-parser";
+import {SharedModule} from "../_shared/shared.module";
+import {BreadcrumbModule} from "primeng/breadcrumb";
 
 
 
@@ -39,7 +41,9 @@ import {NgxCsvParserModule} from "ngx-csv-parser";
     StepperModule,
     TableModule,
     FileUploadModule,
-    NgxCsvParserModule
+    NgxCsvParserModule,
+    SharedModule,
+    BreadcrumbModule
   ],
   providers: [
     UsersFromCsvService,
