@@ -1,6 +1,6 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {StationsApi, UsersApi} from 'purecloud-platform-client-v2';
-import { retry } from '@lifeomic/attempt';
+import {retry} from '@lifeomic/attempt';
 
 @Injectable()
 export class StationsApiService {
@@ -39,13 +39,11 @@ async getStationByWebRtcUserId(userId: string) {
       { delay: 1000, factor: 1, maxAttempts: 6 }
     );
 
-    const station = {
+    return {
       id: results.entities![0].id,
       webRtcUserId: results.entities![0].webRtcUserId,
       name: results.entities![0].name,
     };
-
-    return station;
   } catch (err) {
     console.log(`Error while retrieving station with userId: ${userId}: ${JSON.stringify(err, null, 4)}`);
     return null;

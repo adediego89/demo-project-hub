@@ -91,12 +91,12 @@ async function addUsersToAGroup(groupId: string, userIds: string[]) {
   } catch (e) {
     console.error(`Error occurred while trying create group for user.`, groupId, userIds, e);
   }
-};
+}
 
 /* Return a list of Group Ids*/
 function getGroupIds() {
   return Object.values(groupsMap).map(value => value!.id)
-};
+}
 
 exports.getGroupIds = getGroupIds;
 exports.getGroupByName = getGroupByName;

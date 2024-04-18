@@ -4,10 +4,10 @@ import { map } from 'rxjs/operators';
 import {
   AnalyticsApi,
   ApiClient,
-  AuthData, AuthorizationApi, ContentManagementApi,
-  ConversationsApi, GroupsApi,
+  AuthData, ContentManagementApi,
+  ConversationsApi,
   Models,
-  RoutingApi, StationsApi,
+  RoutingApi,
   UsersApi
 } from 'purecloud-platform-client-v2';
 import { UrlTree, Params } from '@angular/router';
@@ -39,8 +39,6 @@ export class GenesysCloudService {
   private usersApi = new UsersApi();
   private routingApi = new RoutingApi();
   private contentManagementApi = new ContentManagementApi();
-  private authApi = new AuthorizationApi();
-  private stationsApi = new StationsApi();
 
   // Authorization values
   language: string = 'en-us';
@@ -103,14 +101,7 @@ export class GenesysCloudService {
 
   // UsersApi
 
-  getMe() {
-    console.log(this.client.config);
-    return this.usersApi.getUsersMe();
-  }
 
-  searchUsers(opts: Models.UserSearchRequest) {
-    return this.usersApi.postUsersSearch(opts)
-  }
 
   async createUser(user: Models.CreateUser) {
     return this.usersApi.postUsers(user);
@@ -136,10 +127,6 @@ export class GenesysCloudService {
       body.cursor = cursor;
     }
     return this.conversationsApi.postConversationsParticipantsAttributesSearch(body);
-  }
-
-  getConversationEmailMessage(conversationId: string, messageId: string) {
-    return this.conversationsApi.getConversationsEmailMessage(conversationId, messageId);
   }
 
   // Analytics API
@@ -181,13 +168,5 @@ export class GenesysCloudService {
 
     await firstValueFrom(this.http.post(response.uploadDestinationUri!, body, opts));
   }
-
-  // Group API
-
-  getGroupByName() {
-
-  }
-
-
 
 }

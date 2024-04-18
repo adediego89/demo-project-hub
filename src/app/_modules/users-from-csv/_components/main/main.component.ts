@@ -1,14 +1,9 @@
 import {Component, ViewChild} from '@angular/core';
-import {FileSelectEvent, FileUpload, FileUploadEvent} from "primeng/fileupload";
+import {FileSelectEvent, FileUpload} from "primeng/fileupload";
 import {IUserFromCsv} from "../../_models/user-from-csv.interface";
 import {NgxCsvParser, NgxCSVParserError} from "ngx-csv-parser";
 import {UsersFromCsvService} from "../../_services/users-from-csv.service";
 import {UserModel} from "../../_models/user-model";
-
-interface UploadEvent {
-  originalEvent: Event;
-  files: File[];
-}
 
 @Component({
   selector: 'app-main',
@@ -82,33 +77,6 @@ export class MainComponent {
       columnNames.includes('SITENAME') &&
       columnNames.includes('PHONEBASE');
 
-  }
-
-  private csvToUser(csv: Array<string[]>) {
-    const userFromCsvList: IUserFromCsv[] = [];
-
-    const nameColIndex = csv[0].findIndex(e => e === 'NAME');
-    const emailColIndex = csv[0].findIndex(e => e === 'EMAIL');
-    const passwordColIndex = csv[0].findIndex(e => e === 'PASSWORD');
-    const groupColIndex = csv[0].findIndex(e => e === 'GROUP');
-    const roleColIndex = csv[0].findIndex(e => e === 'ROLE');
-    const siteNameColIndex = csv[0].findIndex(e => e === 'SITENAME');
-    const phoneBaseColIndex = csv[0].findIndex(e => e === 'PHONEBASE');
-
-    for(let i = 1; i < csv.length; i++) {
-      const userFromCsv: IUserFromCsv = {
-        NAME: csv[i][nameColIndex],
-        EMAIL: csv[i][emailColIndex],
-        PASSWORD: csv[i][passwordColIndex],
-        GROUP: csv[i][groupColIndex],
-        ROLE: csv[i][roleColIndex],
-        SITENAME: csv[i][siteNameColIndex],
-        PHONEBASE: csv[i][phoneBaseColIndex],
-      };
-      userFromCsvList.push(userFromCsv);
-    }
-
-    return userFromCsvList;
   }
 
   private async parseCsv(file: File): Promise<Array<string[]>> {

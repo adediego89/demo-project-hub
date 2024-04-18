@@ -6,7 +6,6 @@ import {PhoneBaseApiService} from "./phone-base-api.service";
 import {SitesApiService} from "./sites-api.service";
 import {StationsApiService} from "./stations-api.service";
 import {PhoneApiService} from "./phone-api.service";
-import {Models} from "purecloud-platform-client-v2";
 import {IUserFromCsv} from "../_models/user-from-csv.interface";
 import {UsersApiService} from "./users-api.service";
 import {UserModel} from "../_models/user-model";
