@@ -1,15 +1,17 @@
 {
   "name": "demo-project-hub",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build",
+    "build": "angular-build-info && ng build",
+    "build-github-pages": "angular-build-info && ng build --output-path docs --base-href /demo-project-hub/",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },
   "private": true,
   "dependencies": {
+    "@angular-builders/custom-webpack": "^17.0.2",
     "@angular/animations": "^17.3.0",
     "@angular/common": "^17.3.0",
     "@angular/compiler": "^17.3.0",
@@ -18,6 +20,14 @@
     "@angular/platform-browser": "^17.3.0",
     "@angular/platform-browser-dynamic": "^17.3.0",
     "@angular/router": "^17.3.0",
+    "@lifeomic/attempt": "^3.1.0",
+    "csv-parser": "^3.0.0",
+    "exceljs": "^4.4.0",
+    "ngx-csv-parser": "^2.0.0",
+    "primeflex": "^3.3.1",
+    "primeicons": "^7.0.0",
+    "primeng": "^17.13.0",
+    "purecloud-platform-client-v2": "^191.0.0",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.14.3"

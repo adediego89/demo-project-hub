@@ -1,0 +1,2 @@
+NAME,EMAIL,PASSWORD,GROUP,ROLE,SITENAME,PHONEBASE
+Test User,testUser@whirly.pl,123456,group_name,role_name,_site_name,phone_base
